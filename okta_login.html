@@ -1,0 +1,113 @@
+<html>
+<head>
+<style>
+
+.okta-sign-in-header img
+  {
+  content:url("https://sydcatholicschools.nsw.edu.au/wp-content/uploads/
+  sites/54/2018/10/sydney-catholic-schools-logo.png");
+  }
+
+.login-bg-image
+{
+background-image: url(https://sydcatholicschools.nsw.edu.au/wp-content/uploads/sites/54/2021/05/maths_main.jpg);
+}
+
+#okta-signin-submit
+{
+    background: #f15a29;
+    border: none;
+    color:#fff;
+}
+
+@media only screen
+and (min-device-width : 1024px)
+{
+.auth-content
+{
+   padding: 50px!important;
+   background: #fff!important;
+   width: 900px;
+}
+
+#okta-sign-in.auth-container.main-container
+  {
+  background:transparent;
+  }
+
+.okta-sign-in-header img
+{
+content:url("https://sydcatholicschools.nsw.edu.au/wp-content/uploads/sites/54/2018/10/sydney-catholic-schools-logo.png");
+padding-top:100px!important;
+display: block;
+max-width: 100%;
+max-height: 100%;
+vertical-align: middle!important;
+ }
+
+.okta-sign-in-header
+  {
+  padding: 100px;
+    opacity: 0.5;
+    background: white;
+  }
+
+
+.auth-container
+{
+display:flex;
+padding:20px;
+width:1000px;
+}
+
+.okta-sign-in-header
+{
+    padding: 100px;
+    opacity: 0.5;
+    background: white!important;
+}
+
+
+.auth-container
+{
+background:transparent;
+}
+
+}
+<style>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="none" />
+
+    <title>{{pageTitle}}</title>
+    {{{SignInWidgetResources}}}
+</head>
+<body>
+    <div class="login-bg-image" style="background-image: {{backgroundImage}}"></div>
+    <div id="okta-login-container"></div>
+
+    <!--
+        "OktaUtil" defines a global OktaUtil object
+        that contains methods used to complete the Okta login flow.
+     -->
+    {{{OktaUtil}}}
+
+    <script type="text/javascript">
+        // "config" object contains default widget configuration
+        // with any custom overrides defined in your admin settings.
+        var config = OktaUtil.getSignInWidgetConfig();
+
+        // Render the Okta Sign-In Widget
+        var oktaSignIn = new OktaSignIn(config);
+        oktaSignIn.renderEl({ el: '#okta-login-container' },
+            OktaUtil.completeLogin,
+            function(error) {
+                // Logs errors that occur when configuring the widget.
+                // Remove or replace this with your own custom error handler.
+                console.log(error.message, error);
+            }
+        );
+    </script>
+</body>
+</html>
