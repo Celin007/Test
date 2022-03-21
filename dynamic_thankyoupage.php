@@ -1,3 +1,4 @@
+<?php
 //This function to load pages based on the page names on sucessful CF7 sending
 function cf7_footer_script(){
 	
